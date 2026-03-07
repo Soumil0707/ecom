@@ -13,18 +13,36 @@ export default function BannerSlider() {
       autoplay={{ delay: 3000, disableOnInteraction: false }}
       loop={true}
       pagination={{ clickable: true }}
-      className="w-full h-[400px]"
+      className="w-full aspect-[3/1]"
     >
-      <SwiperSlide>
-        <Image src="/products/1g.png" alt="Banner 1" className="w-full h-full object-cover" fill />
+      <SwiperSlide className="relative">
+        <Image
+          src="/featured.png"
+          alt="Banner 1"
+          fill
+          sizes="100vw"
+          className="object-contain"
+        />
       </SwiperSlide>
 
-      <SwiperSlide>
-        <Image src="/products/2g.png" alt="Banner 2" className="w-full h-full object-cover" fill />
+      <SwiperSlide className="relative">
+        <Image
+          src="/Gemini_Generated_Image_n96ez8n96ez8n96e.png"
+          alt="Banner 2"
+          fill
+          sizes="100vw"
+          className="object-contain"
+        />
       </SwiperSlide>
 
-      <SwiperSlide>
-        <Image src="/products/3b.png" alt="Banner 3" className="w-full h-full object-cover" fill />
+      <SwiperSlide className="relative">
+        <Image
+          src="/Gemini_Generated_Image_su35hsu35hsu35hs.png"
+          alt="Banner 3"
+          fill
+          sizes="100vw"
+          className=" object-contain"
+        />
       </SwiperSlide>
     </Swiper>
   );
