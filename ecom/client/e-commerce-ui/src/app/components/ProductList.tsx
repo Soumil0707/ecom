@@ -1,6 +1,7 @@
+import { Suspense } from "react"
 import { ProductsType } from "@/types"
-import Categories from "./Categories";
-import ProductCard from "./ProductCard";
+import Categories from "./Categories"
+import ProductCard from "./ProductCard"
 
 const products: ProductsType = [
 {
@@ -122,9 +123,9 @@ const products: ProductsType = [
 const ProductList = () => {
   return (
        <div className="w-full">
-        
-
-            <Categories />
+  <Suspense fallback={<div>Loading categories...</div>}>
+    <Categories />
+  </Suspense>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
                 {products.map((product) => (
                     <ProductCard key={product.id} product={product} />
