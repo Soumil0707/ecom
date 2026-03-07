@@ -2,6 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import Image from "next/Image";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -16,15 +17,15 @@ export default function BannerSlider() {
       className="w-full h-[400px]"
     >
       <SwiperSlide>
-        <img src="/products/1g.png" className="w-full h-full object-cover" />
+        <Image src="/products/1g.png" alt="Banner 1" className="w-full h-full object-cover" fill />
       </SwiperSlide>
 
       <SwiperSlide>
-        <img src="/products/2g.png" className="w-full h-full object-cover" />
+        <Image src="/products/2g.png" alt="Banner 2" className="w-full h-full object-cover" fill />
       </SwiperSlide>
 
       <SwiperSlide>
-        <img src="/products/3b.png" className="w-full h-full object-cover" />
+        <Image src="/products/3b.png" alt="Banner 3" className="w-full h-full object-cover" fill />
       </SwiperSlide>
     </Swiper>
   );
