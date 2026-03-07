@@ -122,16 +122,13 @@ const products: ProductsType = [
 
 const ProductList = () => {
   return (
-       <div className="w-full">
-  <Suspense fallback={<div>Loading categories...</div>}>
-    <Categories />
-  </Suspense>
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
-                {products.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                ))}
-            </div>
-       </div>
+    <div className="w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
   )
 }
 

@@ -1,8 +1,7 @@
-import BannerSlider from "@/components/BannerSlider";
-import ProductList from "./components/ProductList";
-import { Suspense } from "react";
-
-export const dynamic = "force-dynamic";
+import BannerSlider from "@/components/BannerSlider"
+import ProductList from "./components/ProductList"
+import Categories from "./components/Categories"
+import { Suspense } from "react"
 
 const Homepage = () => {
   return (
@@ -11,11 +10,13 @@ const Homepage = () => {
         <BannerSlider />
       </div>
 
-      <Suspense fallback={<div>Loading...</div>}>
-        <ProductList />
+      <Suspense fallback={<div>Loading categories...</div>}>
+        <Categories />
       </Suspense>
-    </div>
-  );
-};
 
-export default Homepage;
+      <ProductList />
+    </div>
+  )
+}
+
+export default Homepage
