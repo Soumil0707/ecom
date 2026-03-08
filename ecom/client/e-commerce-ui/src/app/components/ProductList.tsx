@@ -12,11 +12,11 @@ const products: ProductsType = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
   price: 39.9,
   sizes: ["s", "m", "l", "xl"],
-  colors: ["gray", "purple", "red"],
+  colors: ["gray", "purple", "green"],
   images: {
     gray: "/products/1g.png",
     purple: "/products/1p.png",
-    red: "/products/1r.png"
+    green: "/products/1gr.png"
   }
 },
 {
@@ -27,10 +27,10 @@ const products: ProductsType = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
   price: 59.9,
   sizes: ["s", "m", "l", "xl"],
-  colors: ["gray", "red"],
+  colors: ["gray", "green"],
   images: {
     gray: "/products/2g.png",
-    red: "/products/2r.png"
+    green: "/products/2gr.png"
   }
 },
 {
@@ -41,10 +41,11 @@ const products: ProductsType = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
   price: 49.9,
   sizes: ["s", "m", "l", "xl"],
-  colors: ["blue", "red"],
+  colors: ["blue", "black","grren"],
   images: {
     blue: "/products/3b.png",
-    red: "/products/3r.png"
+    black: "/products/3bl.png",
+    green: "/products/3gr.png"
   }
 },
 {
@@ -55,9 +56,9 @@ const products: ProductsType = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
   price: 44.9,
   sizes: ["s", "m", "l", "xl"],
-  colors: ["red", "white"],
+  colors: ["peach", "white"],
   images: {
-    red: "/products/4r.png",
+    peach: "/products/4p.png",
     white: "/products/4w.png"
   }
 },
@@ -69,10 +70,11 @@ const products: ProductsType = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
   price: 39.9,
   sizes: ["s", "m", "l", "xl"],
-  colors: ["blue", "orange"],
+  colors: ["blue", "orange", "red"],
   images: {
-    blue: "/products/5b.png",
-    orange: "/products/5o.png"
+    blue: "/products/5bl.png",
+    orange: "/products/5o.png",
+    red: "/products/5r.png"
   }
 },
 {
@@ -97,10 +99,10 @@ const products: ProductsType = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
   price: 54.9,
   sizes: ["s", "m", "l", "xl"],
-  colors: ["gray", "purple"],
+  colors: ["gray", "pink"],
   images: {
     gray: "/products/7g.png",
-    purple: "/products/7p.png"
+    pink: "/products/7p.png"
   }
 },
 {
@@ -111,10 +113,10 @@ const products: ProductsType = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
   price: 48.9,
   sizes: ["s", "m", "l", "xl"],
-  colors: ["gray", "purple"],
+  colors: ["blue", "green"],
   images: {
-    gray: "/products/8g.png",
-    purple: "/products/8p.png"
+    blue: "/products/8b.png",
+    green: "/products/8gr.png"
   }
 }
 ];
