@@ -56,9 +56,9 @@ const products: ProductsType = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
   price: 44.9,
   sizes: ["s", "m", "l", "xl"],
-  colors: ["peach", "white"],
+  colors: ["pink", "white"],
   images: {
-    peach: "/products/4p.png",
+    pink: "/products/4p.png",
     white: "/products/4w.png"
   }
 },
