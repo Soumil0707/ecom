@@ -1,7 +1,7 @@
-import { Suspense } from "react"
 import { ProductsType } from "@/types"
-import Categories from "./Categories"
 import ProductCard from "./ProductCard"
+import Link from "next/dist/client/link";
+import Categories from "./Categories";
 
 const products: ProductsType = [
 {
@@ -41,7 +41,7 @@ const products: ProductsType = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
   price: 49.9,
   sizes: ["s", "m", "l", "xl"],
-  colors: ["blue", "black","grren"],
+  colors: ["blue", "black","green"],
   images: {
     blue: "/products/3b.png",
     black: "/products/3bl.png",
@@ -122,7 +122,7 @@ const products: ProductsType = [
 ];
 
 
-const ProductList = () => {
+const ProductList = ({category}:{ category: string }) => {
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
@@ -130,6 +130,9 @@ const ProductList = () => {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+      <Link href={`${category ? `/products?category=${category}` : "/products"}`} className="mt-12 flex item-center justify-center text-sm font-medium text-gray-500 hover:text-gray-900 transition-all duration-300">
+        View All Products
+      </Link>
     </div>
   )
 }

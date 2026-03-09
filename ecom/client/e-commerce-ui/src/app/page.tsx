@@ -3,7 +3,8 @@ import ProductList from "./components/ProductList"
 import Categories from "./components/Categories"
 import { Suspense } from "react"
 
-const Homepage = () => {
+const Homepage = async ({searchParams}: {searchParams: Promise<{category:string}>}) => {
+  const category = (await searchParams).category
   return (
     <div>
       <div className="mt-4 mb-12">
@@ -14,7 +15,7 @@ const Homepage = () => {
         <Categories />
       </Suspense>
 
-      <ProductList />
+      <ProductList category={category} />
     </div>
   )
 }
