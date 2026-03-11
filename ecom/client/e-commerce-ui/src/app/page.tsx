@@ -1,7 +1,8 @@
 import BannerSlider from "@/components/BannerSlider"
 import ProductList from "./components/ProductList"
 import Categories from "./components/Categories"
-import { Suspense } from "react"
+  import { Suspense } from "react"
+
 
 const Homepage = async ({searchParams}: {searchParams: Promise<{category:string}>}) => {
   const category = (await searchParams).category
@@ -14,8 +15,7 @@ const Homepage = async ({searchParams}: {searchParams: Promise<{category:string}
       <Suspense fallback={<div>Loading categories...</div>}>
         <Categories />
       </Suspense>
-
-      <ProductList category={category} />
+      <ProductList category={category} params="homepage" />
     </div>
   )
 }

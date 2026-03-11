@@ -2,6 +2,7 @@ import { ProductsType } from "@/types"
 import ProductCard from "./ProductCard"
 import Link from "next/dist/client/link";
 import Categories from "./Categories";
+import Filter from "./Filter";
 
 const products: ProductsType = [
 {
@@ -122,9 +123,11 @@ const products: ProductsType = [
 ];
 
 
-const ProductList = ({category}:{ category: string }) => {
+const ProductList = ({category, params}:{ category: string, params:"homepage" | "products" }) => {
   return (
     <div className="w-full">
+        {params === "products" && <Filter />}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
