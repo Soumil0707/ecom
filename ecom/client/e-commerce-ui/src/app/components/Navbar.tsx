@@ -3,6 +3,7 @@ import Image from "next/image"
 import SearchBar from "./SearchBar"
 import { Bell, Home, ShoppingCart } from "lucide-react"
 import ShoppingCartIcon from "./ShoppingCartIcon"
+import { Suspense } from "react"
 
 const Navbar = () => {
   return (
@@ -19,7 +20,9 @@ const Navbar = () => {
                     <Home className="w-4 h-4 text-gray-600"/>
             </Link>
             <Bell className="w-4 h-4 text-gray-600"/>
+            <Suspense fallback={<div>Loading...</div>}>
             <ShoppingCartIcon/>
+            </Suspense>
             <Link href='/login' className="text-sm font-medium text-gray-600">Sign in</Link>
         </div>
        </nav>
