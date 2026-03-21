@@ -102,8 +102,13 @@
 
 // app/cart/page.tsx
 
+import { Suspense } from "react";
 import CartClient from "./CartClient";
 
 export default function CartPage() {
-  return <CartClient />;
+  return (
+    <Suspense fallback={<div>Loading cart...</div>}>
+      <CartClient />
+    </Suspense>
+  );
 }
