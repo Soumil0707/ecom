@@ -104,12 +104,6 @@
 
 import CartClient from "./CartClient";
 
-type CartPageProps = {
-  searchParams: { step?: string };
-};
-
-export default function CartPage({ searchParams }: CartPageProps) {
-  const activeStep = parseInt(searchParams.step || "1");
-
-  return <CartClient activeStep={activeStep} />;
+export default function CartPage() {
+  return <CartClient />;
 }
