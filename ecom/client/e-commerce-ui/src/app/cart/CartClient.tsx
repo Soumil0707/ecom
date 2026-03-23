@@ -2,7 +2,7 @@
 
 import PaymentForm from "@/components/PaymentForm";
 import ShippingForm from "@/components/ShippingForm";
-import { CartItemsType } from "@/types";
+import { CartItemsType, ShippingFormInputs } from "@/types";
 import { ArrowRight, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
@@ -77,7 +77,7 @@ export default function CartClient() {
   const searchParams = useSearchParams();
   const activeStep = parseInt(searchParams.get("step") || "1");
   const router = useRouter();
-  const [shippingForm, setShippingForm] = useState(null);
+  const [shippingForm, setShippingForm] = useState<ShippingFormInputs | null>(null);
   return (
     <div className="flex flex-col items-center justify-center mt-12 gap-8">
       <h1 className="text-2xl font-medium">Your Cart</h1>
@@ -123,7 +123,7 @@ export default function CartClient() {
                 </button>
               </div>
             ))
-          ) : activeStep === 2 ? (<ShippingForm />) : ( activeStep === 3 && shippingForm ? <PaymentForm /> : <p>Please fill out the shipping form first.</p>)}
+          ) : activeStep === 2 ? (<ShippingForm setShippingForm = {setShippingForm} />) : ( activeStep === 3 && shippingForm ? <PaymentForm /> : <p>Please fill out the shipping form first.</p>)}
         </div>
         <div className="w-full h-max lg:w-5/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
           <h2 className="font-semibold">
