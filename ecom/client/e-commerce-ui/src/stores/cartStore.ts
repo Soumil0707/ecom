@@ -1,8 +1,8 @@
-import { create } from 'zustand'
+// import { create } from 'zustand'
 
-const useStore = create ((set)=>{
-    cart: [],
-    addToCart: () => ,
-    removeFromCart: ()=> ,
-    clearCart: ()=>
-})
+// const useStore = create ((set)=>{
+//     cart: [],
+//     addToCart: () => ,
+//     removeFromCart: ()=> ,
+//     clearCart: ()=>
+// })
