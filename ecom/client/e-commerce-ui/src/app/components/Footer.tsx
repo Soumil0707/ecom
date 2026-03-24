@@ -22,7 +22,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col text-sm gap-4 text-gray-400 items-center  md:items-start">
                 <p className="text-sm text-amber-50">Products</p>
-                <Link href='/'>ALl Produscts</Link>
+                <Link href='/'>ALL Produscts</Link>
                 <Link href='/'>New Arrivals</Link>
                 <Link href='/'>Best Sellers</Link>
                 <Link href='/'>Sale</Link>
