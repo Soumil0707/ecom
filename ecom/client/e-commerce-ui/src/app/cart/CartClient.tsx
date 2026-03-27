@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
+import useCartStore from "../../stores/cartStore";
 
 
 
@@ -16,61 +17,61 @@ const steps = [
   { id: 2, title: "Shipping Details" },
   { id: 3, title: "Payment" }
 ];
-const cartItems: CartItemsType = [
-  {
-    id: 1,
-    name: "Product 1",
-    shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
-    price: 39.9,
-    sizes: ["s", "m", "l", "xl"],
-    colors: ["gray", "purple", "green"],
-    images: {
-      gray: "/products/1g.png",
-      purple: "/products/1p.png",
-      green: "/products/1gr.png"
-    },
-    quantity: 1,
-    selectedSize: "m",
-    selectedColor: "purple"
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
-    price: 59.9,
-    sizes: ["s", "m", "l", "xl"],
-    colors: ["gray", "green"],
-    images: {
-      gray: "/products/2g.png",
-      green: "/products/2gr.png"
-    },
-    quantity: 1,
-    selectedSize: "m",
-    selectedColor: "gray"
-  },
-  {
-    id: 3,
-    name: "Product 3",
-    shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
-    price: 49.9,
-    sizes: ["s", "m", "l", "xl"],
-    colors: ["blue", "black", "green"],
-    images: {
-      blue: "/products/3b.png",
-      black: "/products/3bl.png",
-      green: "/products/3gr.png"
-    },
-    quantity: 1,
-    selectedSize: "l",
-    selectedColor: "blue"
-  }
-]
+// const cartItems: CartItemsType = [
+//   {
+//     id: 1,
+//     name: "Product 1",
+//     shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
+//     description:
+//       "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
+//     price: 39.9,
+//     sizes: ["s", "m", "l", "xl"],
+//     colors: ["gray", "purple", "green"],
+//     images: {
+//       gray: "/products/1g.png",
+//       purple: "/products/1p.png",
+//       green: "/products/1gr.png"
+//     },
+//     quantity: 1,
+//     selectedSize: "m",
+//     selectedColor: "purple"
+//   },
+//   {
+//     id: 2,
+//     name: "Product 2",
+//     shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
+//     description:
+//       "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
+//     price: 59.9,
+//     sizes: ["s", "m", "l", "xl"],
+//     colors: ["gray", "green"],
+//     images: {
+//       gray: "/products/2g.png",
+//       green: "/products/2gr.png"
+//     },
+//     quantity: 1,
+//     selectedSize: "m",
+//     selectedColor: "gray"
+//   },
+//   {
+//     id: 3,
+//     name: "Product 3",
+//     shortDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
+//     description:
+//       "Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit.",
+//     price: 49.9,
+//     sizes: ["s", "m", "l", "xl"],
+//     colors: ["blue", "black", "green"],
+//     images: {
+//       blue: "/products/3b.png",
+//       black: "/products/3bl.png",
+//       green: "/products/3gr.png"
+//     },
+//     quantity: 1,
+//     selectedSize: "l",
+//     selectedColor: "blue"
+//   }
+// ]
 
 
 export default function CartClient() {
@@ -78,6 +79,7 @@ export default function CartClient() {
   const activeStep = parseInt(searchParams.get("step") || "1");
   const router = useRouter();
   const [shippingForm, setShippingForm] = useState<ShippingFormInputs | null>(null);
+  const {cart , removeFromCart} = useCartStore()
   return (
     <div className="flex flex-col items-center justify-center mt-12 gap-8">
       <h1 className="text-2xl font-medium">Your Cart</h1>
@@ -97,10 +99,10 @@ export default function CartClient() {
         ))}
       </div>
       <div className="w-full flex flex-col lg:flex-row gap-16">
-        <div className="w-full lg:w-7/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
+        <div className="w-full lg:w-7/12 max-h-125 overflow-y-auto shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
           {activeStep === 1 ? (
-            cartItems.map(item=>(
-              <div className="flex items-center justify-between" key={item.id}>
+            cart.map(item=>(
+              <div className="flex items-center justify-between" key={item.id + item.selectedSize + item.selectedColor}>
                 {/* image */}
                 <div className="flex gap-8">
                  
@@ -118,7 +120,7 @@ export default function CartClient() {
                   </div>
                 </div>
                 {/* delete button */}
-                <button className="w-8 h-8 rounded-full bg-red-100 text-red-500 flex items-center justify-center hover:bg-red-200 transition-all duration-300">
+                <button onClick = {()=> {removeFromCart(item)}} className="w-8 h-8 rounded-full bg-red-100 text-red-500 flex items-center justify-center hover:bg-red-200 transition-all duration-300">
                   <Trash2 className="w-4 h-4"/>
                 </button>
               </div>
@@ -132,11 +134,11 @@ export default function CartClient() {
           <div className=" flex flex-col gap-4">
             <div className=" flex justify-between text-sm">
               <p className=" text-gray-500">Subtotal</p>
-              <p className="font-medium text-gray-800">${cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}</p>
+              <p className="font-medium text-gray-800">${cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}</p>
             </div>
             <div className=" flex justify-between text-sm">
               <p className=" text-gray-500">Discount(10%)</p>
-              <p className="font-medium text-gray-800">${(cartItems.reduce((total, item) => total + (item.price * item.quantity), 0) * 0.1).toFixed(2)}</p>
+              <p className="font-medium text-gray-800">${(cart.reduce((total, item) => total + (item.price * item.quantity), 0) * 0.1).toFixed(2)}</p>
             </div>
             <div className=" flex justify-between text-sm">
               <p className=" text-gray-500">Shipping Fees</p>
@@ -144,7 +146,7 @@ export default function CartClient() {
             </div>
             <div className=" flex justify-between text-lg font-bold border-t-2 pt-4 border-gray-300">
               <p className="  text-gray-800">Total</p>
-              <p className=" text-gray-800">${(cartItems.reduce((total, item) => total + (item.price * item.quantity), 0) - (cartItems.reduce((total, item) => total + (item.price * item.quantity), 0) * 0.1) + 10.00).toFixed(2)}</p>
+              <p className=" text-gray-800">${(cart.reduce((total, item) => total + (item.price * item.quantity), 0) - (cart.reduce((total, item) => total + (item.price * item.quantity), 0) * 0.1) + 10.00).toFixed(2)}</p>
             </div>
 
           </div>

@@ -6,12 +6,15 @@ import { useStore } from "zustand"
 import useCartStore from "../../stores/cartStore"
 
 const ShoppingCartIcon = () => {
-  const {cart} = useCartStore()
+  const {cart, hasHydrated} = useCartStore()
+  if(!hasHydrated){
+    return null
+  }
   return (
        <div className="relative">
         <Link href="/cart">
           <ShoppingCart className="w-4 h-4 text-gray-600"/>
-          <span className="absolute -top-3 -right-3 bg-amber-400 text-white rounded-full w-4 h-4 flex items-center justify-center">{cart.length}</span>
+          <span className="absolute -top-3 -right-3 bg-amber-400 text-white rounded-full w-4 h-4 flex items-center justify-center">{cart.reduce((acc, item) => acc + item.quantity,0)}</span>
         </Link>
        </div>
   )
